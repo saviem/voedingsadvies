@@ -12,12 +12,9 @@
 
 <header class="sticky top-0 z-40 border-b border-line/80 bg-paper/80 backdrop-blur-md">
     <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="{{ $home }}" class="flex items-center gap-2.5">
-            <img src="{{ asset('brand/logo-header.png') }}?v=gut6" alt="" width="28" height="28" class="h-7 w-7 shrink-0" decoding="async">
-            <span class="flex items-baseline gap-2">
-                <span class="text-lg font-semibold tracking-tight text-ink">Candidakuur</span>
-                <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-muted">Anti-candida</span>
-            </span>
+        <a href="{{ $home }}" class="flex items-baseline gap-2">
+            <span class="text-lg font-semibold tracking-tight text-ink">Candidakuur</span>
+            <span class="text-[11px] font-medium uppercase tracking-[0.16em] text-muted">Anti-candida</span>
         </a>
         <nav class="hidden items-center gap-1 md:flex">
             @foreach ($links as $link)

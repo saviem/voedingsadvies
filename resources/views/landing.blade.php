@@ -9,6 +9,15 @@
 <section class="relative overflow-hidden">
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-accent-soft)_0%,_transparent_55%)]"></div>
     <div class="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-conditional-soft/70 blur-2xl"></div>
+    <img
+        src="{{ asset('brand/logo-hero.png') }}?v=gut18"
+        alt=""
+        width="640"
+        height="900"
+        decoding="async"
+        aria-hidden="true"
+        class="pointer-events-none absolute top-1/2 right-[clamp(2.5rem,6vw,7rem)] hidden h-auto w-[min(40vw,32rem)] -translate-y-1/2 select-none opacity-25 sm:block"
+    >
     <div class="relative mx-auto max-w-6xl px-4 pb-16 pt-14 sm:px-6 sm:pb-24 sm:pt-20">
         <p class="text-xs font-medium uppercase tracking-[0.22em] text-accent">3 weken · Candidakuur</p>
         <h1 class="mt-5 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-6xl sm:leading-[1.05]">

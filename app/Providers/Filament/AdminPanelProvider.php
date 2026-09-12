@@ -9,6 +9,8 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\Facades\Blade;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
@@ -27,11 +29,19 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->brandName(config('app.name'))
-            ->brandLogo(asset('brand/logo-admin-light.png').'?v=gut6')
+            ->brandLogo(asset('brand/favicon-light-192.png').'?v=gut18')
+            ->darkModeBrandLogo(asset('brand/favicon-dark-192.png').'?v=gut18')
             ->brandLogoHeight('2rem')
             ->homeUrl(fn (): string => route('home'))
             ->path('admin')
             ->login()
+            ->renderHook(
+                PanelsRenderHook::HEAD_END,
+                fn (): string => Blade::render(<<<'HTML'
+                    <link rel="icon" href="{{ asset('brand/favicon-light-32.png') }}?v=gut18" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+                    <link rel="icon" href="{{ asset('brand/favicon-dark-32.png') }}?v=gut18" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+                HTML),
+            )
             ->colors([
                 'primary' => Color::hex('#1F6B4A'),
             ])

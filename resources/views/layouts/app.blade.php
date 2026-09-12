@@ -12,10 +12,10 @@
     <meta name="apple-mobile-web-app-title" content="Candidakuur">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="{{ asset('manifest.json') }}">
-    <link rel="icon" href="{{ asset('brand/favicon-light-32.png') }}?v=gut6" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="{{ asset('brand/favicon-dark-32.png') }}?v=gut6" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="{{ asset('favicon.ico') }}?v=gut6" sizes="any">
-    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}?v=gut6">
+    <link rel="icon" href="{{ asset('brand/favicon-light-32.png') }}?v=gut18" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="{{ asset('brand/favicon-dark-32.png') }}?v=gut18" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v=gut18" sizes="any">
+    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}?v=gut18">
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

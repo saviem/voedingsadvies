@@ -57,6 +57,9 @@
                     @if ($dayEntry)
                         <p class="mt-2 text-[11px] text-muted">🙂 {{ $dayEntry->mood }}/5</p>
                         <p class="text-[11px] text-muted">⚡ {{ $dayEntry->energy }}/5</p>
+                        @if ($dayEntry->nystatin_morning || $dayEntry->nystatin_afternoon || $dayEntry->nystatin_evening)
+                            <p class="mt-1 text-[10px] text-accent">Nystatine</p>
+                        @endif
                     @else
                         <p class="mt-2 text-[11px] text-muted/60">invullen</p>
                     @endif
@@ -126,6 +129,31 @@
                     @error('energy')
                         <p class="mt-2 text-sm text-deny">{{ $message }}</p>
                     @enderror
+                </div>
+            </div>
+
+            <div>
+                <p class="text-xs font-medium uppercase tracking-[0.14em] text-muted">Nystatine</p>
+                <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Nystatine">
+                    @php
+                        $nystatinDoses = [
+                            'nystatin_morning' => 'Ochtend',
+                            'nystatin_afternoon' => 'Middag',
+                            'nystatin_evening' => 'Avond',
+                        ];
+                    @endphp
+                    @foreach ($nystatinDoses as $field => $label)
+                        <label class="inline-flex items-center gap-2 rounded-full border border-line px-3 py-1.5 text-xs {{ $isPlus ? 'cursor-pointer' : 'cursor-not-allowed' }}">
+                            <input
+                                type="checkbox"
+                                name="{{ $field }}"
+                                value="1"
+                                @checked((bool) old($field, $entry?->{$field} ?? false))
+                                @disabled(! $isPlus)
+                            >
+                            {{ $label }}
+                        </label>
+                    @endforeach
                 </div>
             </div>
 

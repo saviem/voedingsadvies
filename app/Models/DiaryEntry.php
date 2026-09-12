@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'entry_date',
     'mood',
     'energy',
+    'nystatin_morning',
+    'nystatin_afternoon',
+    'nystatin_evening',
     'symptom_tags',
     'note',
     'meals',
@@ -30,6 +33,9 @@ class DiaryEntry extends Model
             'entry_date' => 'date',
             'mood' => 'integer',
             'energy' => 'integer',
+            'nystatin_morning' => 'boolean',
+            'nystatin_afternoon' => 'boolean',
+            'nystatin_evening' => 'boolean',
             'symptom_tags' => 'array',
         ];
     }

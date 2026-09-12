@@ -151,6 +151,9 @@ class DiaryController extends Controller
             'entry_date' => ['required', 'date', 'before_or_equal:today'],
             'mood' => ['required', 'integer', 'min:1', 'max:5'],
             'energy' => ['required', 'integer', 'min:1', 'max:5'],
+            'nystatin_morning' => ['sometimes', 'boolean'],
+            'nystatin_afternoon' => ['sometimes', 'boolean'],
+            'nystatin_evening' => ['sometimes', 'boolean'],
             'symptom_tags' => ['nullable', 'array'],
             'symptom_tags.*' => ['string', 'max:40'],
             'note' => ['nullable', 'string', 'max:2000'],
@@ -158,6 +161,9 @@ class DiaryController extends Controller
         ]);
 
         $validated['symptom_tags'] = array_values(array_unique($validated['symptom_tags'] ?? []));
+        $validated['nystatin_morning'] = $request->boolean('nystatin_morning');
+        $validated['nystatin_afternoon'] = $request->boolean('nystatin_afternoon');
+        $validated['nystatin_evening'] = $request->boolean('nystatin_evening');
 
         return $validated;
     }

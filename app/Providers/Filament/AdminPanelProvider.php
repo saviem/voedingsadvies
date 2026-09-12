@@ -27,6 +27,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->brandName(config('app.name'))
+            ->brandLogo(asset('brand/logo-admin-light.png').'?v=gut6')
+            ->brandLogoHeight('2rem')
+            ->homeUrl(fn (): string => route('home'))
             ->path('admin')
             ->login()
             ->colors([

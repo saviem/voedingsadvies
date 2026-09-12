@@ -167,4 +167,27 @@ class DiaryTest extends TestCase
             ])
             ->assertSessionHasErrors('entry_date');
     }
+
+    public function test_plus_user_can_track_nystatin_doses(): void
+    {
+        $user = User::factory()->plus()->create();
+
+        $this->actingAs($user)
+            ->post(route('diary.store'), [
+                'entry_date' => now()->toDateString(),
+                'mood' => 3,
+                'energy' => 3,
+                'nystatin_morning' => '1',
+                'nystatin_evening' => '1',
+            ])
+            ->assertRedirect();
+
+        $this->assertDatabaseHas('diary_entries', [
+            'user_id' => $user->id,
+            'nystatin_morning' => 1,
+            'nystatin_afternoon' => 0,
+            'nystatin_evening' => 1,
+        ]);
+    }
+
 }

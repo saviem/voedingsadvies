@@ -6,14 +6,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@hasSection('title')@yield('title') · @endif{{ config('app.name') }}</title>
     <meta name="description" content="@yield('description', 'Doorzoekbare kennisbank: wat mag je wel en niet eten tijdens de candidakuur van praktijk ARDRA.')">
-    <meta name="theme-color" content="#0F1714">
+    <meta name="theme-color" content="#F6F7F4">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Candidakuur">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="{{ asset('manifest.json') }}">
-    <link rel="icon" href="{{ asset('icon.svg') }}" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="{{ asset('icons/apple-touch-icon.png') }}">
+    <link rel="icon" href="{{ asset('brand/favicon-light-32.png') }}?v=gut6" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="{{ asset('brand/favicon-dark-32.png') }}?v=gut6" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="{{ asset('favicon.ico') }}?v=gut6" sizes="any">
+    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}?v=gut6">
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>

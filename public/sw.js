@@ -1,4 +1,4 @@
-const CACHE = 'voedingsadvies-static-v1';
+const CACHE = 'voedingsadvies-static-v2';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(self.skipWaiting());
@@ -23,9 +23,17 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    const isStatic = url.pathname.startsWith('/build/')
-        || url.pathname.startsWith('/icons/')
+    // Never cache brand/favicon — always network (icons change often in dev)
+    if (
+        url.pathname.startsWith('/brand/')
         || url.pathname === '/icon.svg'
+        || url.pathname === '/favicon.ico'
+    ) {
+        event.respondWith(fetch(request));
+        return;
+    }
+
+    const isStatic = url.pathname.startsWith('/build/')
         || url.pathname === '/manifest.json';
 
     if (! isStatic) {
@@ -34,17 +42,19 @@ self.addEventListener('fetch', (event) => {
 
     event.respondWith(
         caches.open(CACHE).then(async (cache) => {
-            const cached = await cache.match(request);
-            if (cached) {
-                return cached;
+            try {
+                const response = await fetch(request);
+                if (response.ok) {
+                    cache.put(request, response.clone());
+                }
+                return response;
+            } catch (e) {
+                const cached = await cache.match(request);
+                if (cached) {
+                    return cached;
+                }
+                throw e;
             }
-
-            const response = await fetch(request);
-            if (response.ok) {
-                cache.put(request, response.clone());
-            }
-
-            return response;
         }),
     );
 });
